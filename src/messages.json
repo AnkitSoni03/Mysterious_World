@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Message from Rajesh Kumar",
+        "content": "Hello, how are you? I wanted to check if you received the updates I shared yesterday regarding the project. Let me know if there's anything else you need.",
+        "received": "10 minutes ago"
+    },
+    {
+        "title": "Message from Priya Sharma",
+        "content": "Hi there! Can you help me with the report preparation? I'm stuck on the analysis section and need some guidance on how to approach it effectively.",
+        "received": "5 hours ago"
+    },
+    {
+        "title": "Message from Shubham Soni",
+        "content": "Thanks for the quick response! Your inputs really helped clarify my doubts, and I was able to complete the task much faster than expected.",
+        "received": "20 hours ago"
+    },
+    {
+        "title": "Message from Neha Gupta",
+        "content": "Could you send me the details of the meeting schedule and the agenda? I need to prepare my presentation accordingly and would appreciate your help.",
+        "received": "3 days ago"
+    },
+    {
+        "title": "Message from Rohan Verma",
+        "content": "Good morning! Have a great day. Also, I wanted to confirm if you'll be joining us for the brainstorming session tomorrow. Let me know.",
+        "received": "7 days ago"
+    },
+    {
+        "title": "Message from Sneha Patil",
+        "content": "Is the project completed? If not, let me know if you need any additional resources or assistance to ensure we meet the deadline without issues.",
+        "received": "12 days ago"
+    },
+    {
+        "title": "Message from Vikram Singh",
+        "content": "Let me know your availability for a quick call later today. I have a few points to discuss regarding the client presentation and the design updates.",
+        "received": "13 days ago"
+    },
+    {
+        "title": "Message from Meena Joshi",
+        "content": "I’ve shared the file. Check it out and let me know if everything looks good or if there are any changes required before I finalize it.",
+        "received": "14 days ago"
+    },
+    {
+        "title": "Message from Aditya Rao",
+        "content": "Can we reschedule the meeting? Something urgent has come up, and I’d prefer a time tomorrow afternoon if that works for you.",
+        "received": "24 days ago"
+    },
+    {
+        "title": "Message from Kavita Mehta",
+        "content": "Thanks for your feedback! It was incredibly helpful in improving the final draft. I'll make the necessary updates and share the revised version soon.",
+        "received": "2 month ago"
+    }
+]
