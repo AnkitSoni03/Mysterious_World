@@ -96,7 +96,6 @@
 
 
 
-
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
@@ -111,8 +110,12 @@ interface CustomUser {
     isAcceptingMessage: boolean;
 }
 
-export async function DELETE(request: Request, context: { params: { messageid: string } }) {
-    const { messageid } = context.params;
+// Updated type definition for the context parameter
+export async function DELETE(
+    request: Request,
+    { params }: { params: { messageid: string } }
+) {
+    const { messageid } = params;
 
     if (!Types.ObjectId.isValid(messageid)) {
         return new Response(
