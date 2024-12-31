@@ -111,10 +111,10 @@ interface CustomUser {
     isAcceptingMessage: boolean;
 }
 
-export async function DELETE(request: Request, { params }: { params: { messageid: string } }) {
-    const messageId = params.messageid;
+export async function DELETE(request: Request, context: { params: { messageid: string } }) {
+    const { messageid } = context.params;
 
-    if (!Types.ObjectId.isValid(messageId)) {
+    if (!Types.ObjectId.isValid(messageid)) {
         return new Response(
             JSON.stringify({ success: false, message: "Invalid message ID format" }),
             { status: 400, headers: { "Content-Type": "application/json" } }
@@ -143,7 +143,7 @@ export async function DELETE(request: Request, { params }: { params: { messageid
     try {
         const userWithMessage = await UserModel.findOne({
             _id: new Types.ObjectId(user._id),
-            "messages._id": new Types.ObjectId(messageId),
+            "messages._id": new Types.ObjectId(messageid),
         });
 
         if (!userWithMessage) {
@@ -159,7 +159,7 @@ export async function DELETE(request: Request, { params }: { params: { messageid
 
         const updateResult = await UserModel.updateOne(
             { _id: new Types.ObjectId(user._id) },
-            { $pull: { messages: { _id: new Types.ObjectId(messageId) } } }
+            { $pull: { messages: { _id: new Types.ObjectId(messageid) } } }
         );
 
         if (updateResult.modifiedCount === 0) {
