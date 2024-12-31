@@ -97,6 +97,7 @@
 
 
 
+import { NextRequest } from 'next/server';
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
@@ -111,12 +112,11 @@ interface CustomUser {
     isAcceptingMessage: boolean;
 }
 
-// Fixed type definition for the route handler
 export async function DELETE(
-    request: Request,
-    context: { params: { messageid: string } }
+    req: NextRequest,
+    { params }: { params: { messageid: string } }
 ) {
-    const messageId = context.params.messageid;
+    const messageId = params.messageid;
 
     if (!Types.ObjectId.isValid(messageId)) {
         return Response.json({ success: false, message: 'Invalid message ID format' }, { status: 400 });
