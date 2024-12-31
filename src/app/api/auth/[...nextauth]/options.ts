@@ -107,10 +107,10 @@ import { Session } from "next-auth";
 import { User } from "next-auth";
 
 // Define interfaces for our custom types
-interface UserCredentials {
-    identifier: string;
-    password: string;
-}
+// interface UserCredentials {
+//     identifier: string;
+//     password: string;
+// }
 
 interface CustomUser extends User {
     id: string;
