@@ -97,12 +97,11 @@
 
 
 
-import { NextRequest } from 'next/server';
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/options";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
-import { Types } from 'mongoose';
+import { Types } from "mongoose";
 
 interface CustomUser {
     _id: string;
@@ -112,41 +111,50 @@ interface CustomUser {
     isAcceptingMessage: boolean;
 }
 
-export async function DELETE(
-    req: NextRequest,
-    { params }: { params: { messageid: string } }
-) {
+export async function DELETE(request: Request, { params }: { params: { messageid: string } }) {
     const messageId = params.messageid;
 
     if (!Types.ObjectId.isValid(messageId)) {
-        return Response.json({ success: false, message: 'Invalid message ID format' }, { status: 400 });
+        return new Response(
+            JSON.stringify({ success: false, message: "Invalid message ID format" }),
+            { status: 400, headers: { "Content-Type": "application/json" } }
+        );
     }
 
     await dbConnect();
     const session = await getServerSession(authOptions);
 
     if (!session?.user) {
-        return Response.json({ success: false, message: 'User not authenticated' }, { status: 401 });
+        return new Response(
+            JSON.stringify({ success: false, message: "User not authenticated" }),
+            { status: 401, headers: { "Content-Type": "application/json" } }
+        );
     }
 
     const user = session.user as CustomUser;
 
     if (!user._id) {
-        return Response.json({ success: false, message: 'User ID not found' }, { status: 400 });
+        return new Response(
+            JSON.stringify({ success: false, message: "User ID not found" }),
+            { status: 400, headers: { "Content-Type": "application/json" } }
+        );
     }
 
     try {
         const userWithMessage = await UserModel.findOne({
             _id: new Types.ObjectId(user._id),
-            'messages._id': new Types.ObjectId(messageId)
+            "messages._id": new Types.ObjectId(messageId),
         });
 
         if (!userWithMessage) {
-            return Response.json({
-                success: false,
-                message: 'Message not found or already deleted',
-                status: 'NOT_FOUND'
-            }, { status: 404 });
+            return new Response(
+                JSON.stringify({
+                    success: false,
+                    message: "Message not found or already deleted",
+                    status: "NOT_FOUND",
+                }),
+                { status: 404, headers: { "Content-Type": "application/json" } }
+            );
         }
 
         const updateResult = await UserModel.updateOne(
@@ -155,24 +163,33 @@ export async function DELETE(
         );
 
         if (updateResult.modifiedCount === 0) {
-            return Response.json({
-                success: false,
-                message: 'Failed to delete message',
-                status: 'DELETE_FAILED'
-            }, { status: 500 });
+            return new Response(
+                JSON.stringify({
+                    success: false,
+                    message: "Failed to delete message",
+                    status: "DELETE_FAILED",
+                }),
+                { status: 500, headers: { "Content-Type": "application/json" } }
+            );
         }
 
-        return Response.json({
-            success: true,
-            message: 'Message deleted successfully',
-            status: 'DELETED'
-        }, { status: 200 });
+        return new Response(
+            JSON.stringify({
+                success: true,
+                message: "Message deleted successfully",
+                status: "DELETED",
+            }),
+            { status: 200, headers: { "Content-Type": "application/json" } }
+        );
     } catch (error) {
         console.error("Error deleting message:", error);
-        return Response.json({
-            success: false,
-            message: 'Error deleting message',
-            status: 'ERROR'
-        }, { status: 500 });
+        return new Response(
+            JSON.stringify({
+                success: false,
+                message: "Error deleting message",
+                status: "ERROR",
+            }),
+            { status: 500, headers: { "Content-Type": "application/json" } }
+        );
     }
 }
