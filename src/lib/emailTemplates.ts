@@ -81,7 +81,7 @@ export function getVerificationEmailTemplate({ username, otp }: EmailTemplatePro
 }
 
 export function getWelcomeEmailTemplate({ username }: WelcomeEmailProps): string {
-    const signInUrl = `${process.env.NEXT_PUBLIC_APP_URL}/`;
+    const signInUrl = `${process.env.NEXT_PUBLIC_APP_URL}/sign-in`;
 
     return `
 <!DOCTYPE html>
