@@ -155,7 +155,7 @@ export function getWelcomeEmailTemplate({ username }: WelcomeEmailProps): string
             </div>
             
             <div style="margin: 30px 0; text-align: center;">
-                <a href="${signInUrl}"
+                <a href="${signInUrl}" 
                     style="
                         background-color: #4CAF50;
                         padding: 15px 30px;
