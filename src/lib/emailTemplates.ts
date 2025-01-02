@@ -81,7 +81,7 @@ export function getVerificationEmailTemplate({ username, otp }: EmailTemplatePro
 }
 
 export function getWelcomeEmailTemplate({ username }: WelcomeEmailProps): string {
-    const signInUrl = `${process.env.NEXT_PUBLIC_APP_URL}/sign-in`;
+    const signInUrl = `${process.env.NEXT_PUBLIC_APP_URL}/`;
 
     return `
 <!DOCTYPE html>
@@ -155,7 +155,7 @@ export function getWelcomeEmailTemplate({ username }: WelcomeEmailProps): string
             </div>
             
             <div style="margin: 30px 0; text-align: center;">
-                <a href="${'https://mysterious-world-lime.vercel.app'}"
+                <a href="${signInUrl}"
                     style="
                         background-color: #4CAF50;
                         padding: 15px 30px;
