@@ -86,7 +86,7 @@ export default function SignUpPage() {
             <div className="w-full max-w-md space-y-8 bg-card rounded-2xl shadow-2xl border border-border/20 p-10">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold tracking-tight text-foreground mb-2">
-                        Mistry Messages
+                        Mysterious World
                     </h1>
                     <p className="text-sm text-muted-foreground">
                         Create your account to join the conversation

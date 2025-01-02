@@ -35,7 +35,12 @@ export default function Dashboard() {
   const [isSwitching, setIsSwitching] = useState(false)
   const [isRefreshing, setIsRefreshing] = useState(false)
   const { toast } = useToast()
-  const { data: session, status } = useSession()
+  const { data: session, status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      return
+    },
+  })
 
   const form = useForm<DashboardFormData>({
     resolver: zodResolver(acceptMessageSchema),
@@ -51,6 +56,10 @@ export default function Dashboard() {
     try {
       await axios.delete(`/api/delete-message/${messageId}`)
       setMessages(messages.filter((message) => message._id !== messageId))
+      toast({
+        title: "Success",
+        description: "Message deleted successfully"
+      })
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>
       toast({
@@ -83,8 +92,8 @@ export default function Dashboard() {
     }
 
     try {
-      const response = await axios.get<ApiResponse>('/api/get-messages');
-      setMessages(response.data.messages || []);
+      const response = await axios.get<ApiResponse>('/api/get-messages')
+      setMessages(response.data.messages || [])
       if (refresh) {
         toast({
           title: "Success",
@@ -142,20 +151,8 @@ export default function Dashboard() {
     )
   }
 
-  if (status === "unauthenticated") {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <Card className="w-96">
-          <CardContent className="pt-6">
-            <p className="text-center text-muted-foreground">Please login to access your dashboard</p>
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
-
   const user = session?.user as NextAuthUser & { username: string }
-  const baseUrl = `${window.location.protocol}//${window.location.host}`
+  const baseUrl = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}` : ''
   const profileUrl = `${baseUrl}/u/${user.username}`
 
   const copyToClipboard = () => {
@@ -269,6 +266,5 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
-  );
-
+  )
 }
