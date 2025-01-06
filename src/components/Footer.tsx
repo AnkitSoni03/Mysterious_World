@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Mystery Message</h3>
+            <h3 className="text-lg font-semibold">Mysterious World</h3>
             <p className="text-sm text-muted-foreground">
               Connecting people through mysterious conversations, one message at a time.
             </p>
@@ -17,8 +17,8 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">About Us</a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Features</a>
+              <a href="https://portfolio-ankit-soni.vercel.app/" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Portfolio</a>
+              <a href="https://drive.google.com/file/d/1VsyXpfl9ht66fMSWY5a5ku941_mee0G1/view?usp=drivesdk" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Resume</a>
               <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Privacy Policy</a>
               <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Terms of Service</a>
             </nav>
