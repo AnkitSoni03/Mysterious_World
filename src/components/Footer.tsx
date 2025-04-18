@@ -18,7 +18,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
               <a href="https://portfolio-ankit-soni.vercel.app/" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Portfolio</a>
-              <a href="https://drive.google.com/file/d/1VsyXpfl9ht66fMSWY5a5ku941_mee0G1/view?usp=drivesdk" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Resume</a>
+              <a href="https://drive.google.com/file/d/1cdDTs3dBbxNlaTzkgdqPVPEeY2OoSMfr/view" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Resume</a>
               <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Privacy Policy</a>
               <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Terms of Service</a>
             </nav>
